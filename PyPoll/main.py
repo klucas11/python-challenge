@@ -35,7 +35,7 @@ with open(csvpath, 'r', newline="") as csvfile:
     print(candidate_dict)
 
     for candidate in candidate_dict:
-        print(calculate_percent_of_votes(total_votes, candidate_dict[candidate]))
+        print(round(calculate_percent_of_votes(total_votes, candidate_dict[candidate]),2))
 
 # # Summary Table
 # print("Election Results")
