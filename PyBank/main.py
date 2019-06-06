@@ -49,7 +49,7 @@ with open(csvpath, 'r', newline="") as csvfile:
 
 # Calculates Average Change
 total_changes = (sum(revenue_change_list[1:86])) # skips 0 to leave out first number in list
-average_change = total_changes / 85 # I KNOW THERE IS PROBABLY A BETTER WAY ... BUT I DON'T KNOW
+average_change = total_changes / 85 # there is probably a better way
 average_change = round(average_change, 2)
 
 
@@ -62,3 +62,17 @@ print(f"Total: ${net_total}")
 print(f"Average  Change: ${average_change}")
 print(f"Greatest Increase in Profits: {row_of_greatest_increase[0]} (${row_of_greatest_increase[2]})")
 print(f"Greatest Decrease in Profits: {row_of_greatest_decrease[0]} (${row_of_greatest_decrease[2]})")
+
+# exports result to text file
+write_file = f"financial_analysis.txt"
+filewriter = open(write_file, mode = 'w')
+
+filewriter.write("Financial Analysis\n")
+filewriter.write("----------------------------\n")
+filewriter.write(f"Total Months: {total_months}\n")
+filewriter.write(f"Total: ${net_total}\n")
+filewriter.write(f"Average  Change: ${average_change}\n")
+filewriter.write(f"Greatest Increase in Profits: {row_of_greatest_increase[0]} (${row_of_greatest_increase[2]})\n")
+filewriter.write(f"Greatest Decrease in Profits: {row_of_greatest_decrease[0]} (${row_of_greatest_decrease[2]})\n")
+
+filewriter.close()
