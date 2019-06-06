@@ -51,3 +51,25 @@ for candidate in candidate_dict:
 print("---------------------------")
 print(f"Winner: {winner_name}")
 print("---------------------------")
+
+# exports result to text file
+write_file = f"election_results.txt"
+filewriter = open(write_file, mode = 'w')
+
+filewriter.write("Election Results\n")
+filewriter.write("---------------------------\n")
+filewriter.write(f"Total Votes: {total_votes}\n")
+filewriter.write("---------------------------\n")
+max_value = 0
+for candidate in candidate_dict:    
+    filewriter.write(f"{candidate}: {calculate_percent_of_votes(total_votes, candidate_dict[candidate])}% ({candidate_dict[candidate]})\n")
+
+    if candidate_dict[candidate] > max_value:
+        max_value = candidate_dict[candidate]
+        winner_name = candidate
+
+filewriter.write("---------------------------\n")
+filewriter.write(f"Winner: {winner_name}\n")
+filewriter.write("---------------------------\n")
+
+filewriter.close()
